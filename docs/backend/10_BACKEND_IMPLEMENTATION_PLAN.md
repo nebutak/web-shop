@@ -64,22 +64,28 @@ Ghi chú kiểm tra:
 
 ## Phase 3 - Auth And RBAC
 
-- [ ] Tạo module `auth`.
-- [ ] Register customer.
-- [ ] Login bằng email/password.
-- [ ] `GET /auth/me`.
-- [ ] Hash password bằng bcrypt.
-- [ ] JWT payload gồm `sub`, `email`, `role`.
-- [ ] Auth middleware attach `req.user`.
-- [ ] Role middleware `requireRole("ADMIN")`.
-- [ ] Rate limit auth routes.
-- [ ] Không bao giờ trả `passwordHash`.
+- [x] Tạo module `auth`.
+- [x] Register customer.
+- [x] Login bằng email/password.
+- [x] `GET /auth/me`.
+- [x] Hash password bằng bcrypt.
+- [x] JWT payload gồm `sub`, `email`, `role`.
+- [x] Auth middleware attach `req.user`.
+- [x] Role middleware `requireRole("ADMIN")`.
+- [x] Rate limit auth routes.
+- [x] Không bao giờ trả `passwordHash`.
 
 Tiêu chí hoàn thành:
 
 - Register/Login trả token.
 - Sai password trả 401.
 - Customer gọi route admin bị 403.
+
+Ghi chú kiểm tra:
+
+- Đã code đầy đủ Phase 3.
+- Thêm endpoint kiểm tra RBAC tạm thời `GET /api/v1/admin/access-check`.
+- Chưa chạy lệnh typecheck/API test trong môi trường hiện tại theo yêu cầu của user. User sẽ tự chạy các lệnh kiểm tra.
 
 ## Phase 4 - Products And Categories
 
@@ -235,5 +241,6 @@ Tiêu chí hoàn thành:
 
 - Phase 1 Backend Foundation đã được code.
 - Phase 2 Prisma Database đã được code.
-- Chưa có Auth/RBAC hoặc business modules.
-- Lần code tiếp theo nên bắt đầu từ Phase 3 - Auth And RBAC.
+- Phase 3 Auth And RBAC đã được code.
+- Chưa có Products/Categories, Cart, Checkout hoặc Admin APIs đầy đủ.
+- Lần code tiếp theo nên bắt đầu từ Phase 4 - Products And Categories.

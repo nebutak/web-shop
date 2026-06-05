@@ -29,4 +29,6 @@ export const env = Object.freeze({
   PORT: parsePort(process.env.PORT),
   FRONTEND_URL: process.env.FRONTEND_URL ?? "http://localhost:3000",
   BACKEND_URL: process.env.BACKEND_URL ?? "http://localhost:4000",
+  JWT_SECRET: process.env.JWT_SECRET ?? "change_this_secret",
+  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN ?? "1d",
 });
