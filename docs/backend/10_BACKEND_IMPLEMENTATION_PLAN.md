@@ -89,21 +89,28 @@ Ghi chú kiểm tra:
 
 ## Phase 4 - Products And Categories
 
-- [ ] Tạo module `categories`.
-- [ ] Tạo module `products`.
-- [ ] Public `GET /products` có pagination, search, line, category, sort.
-- [ ] Public `GET /products/featured`.
-- [ ] Public `GET /products/:slug`.
-- [ ] Public chỉ trả product `ACTIVE`.
-- [ ] Admin CRUD product.
-- [ ] Khi tạo product phải tạo inventory.
-- [ ] Archive product bằng `status = ARCHIVED`, không hard delete.
+- [x] Tạo module `categories`.
+- [x] Tạo module `products`.
+- [x] Public `GET /products` có pagination, search, line, category, sort.
+- [x] Public `GET /products/featured`.
+- [x] Public `GET /products/:slug`.
+- [x] Public chỉ trả product `ACTIVE`.
+- [x] Admin CRUD product.
+- [x] Khi tạo product phải tạo inventory.
+- [x] Archive product bằng `status = ARCHIVED`, không hard delete.
 
 Tiêu chí hoàn thành:
 
 - Public xem được 3 sản phẩm seed.
 - Product detail có images, inventory, category.
 - Admin tạo/sửa/archive product được.
+
+Ghi chú kiểm tra:
+
+- Đã code đầy đủ Phase 4.
+- Public endpoints: `GET /api/v1/categories`, `GET /api/v1/products`, `GET /api/v1/products/featured`, `GET /api/v1/products/:slug`.
+- Admin endpoints: `GET/POST /api/v1/admin/products`, `GET/PATCH/DELETE /api/v1/admin/products/:id`.
+- Chưa chạy typecheck/API test trong môi trường hiện tại theo yêu cầu của user. User sẽ tự chạy các lệnh kiểm tra.
 
 ## Phase 5 - Cart And Coupon Calculation
 
@@ -242,5 +249,6 @@ Tiêu chí hoàn thành:
 - Phase 1 Backend Foundation đã được code.
 - Phase 2 Prisma Database đã được code.
 - Phase 3 Auth And RBAC đã được code.
-- Chưa có Products/Categories, Cart, Checkout hoặc Admin APIs đầy đủ.
-- Lần code tiếp theo nên bắt đầu từ Phase 4 - Products And Categories.
+- Phase 4 Products And Categories đã được code.
+- Chưa có Cart, Checkout hoặc Admin APIs đầy đủ.
+- Lần code tiếp theo nên bắt đầu từ Phase 5 - Cart And Coupon Calculation.
