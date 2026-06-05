@@ -140,19 +140,19 @@ Ghi chú kiểm tra:
 
 ## Phase 6 - Checkout And Orders
 
-- [ ] Tạo module `checkout`.
-- [ ] Tạo module `orders`.
-- [ ] `POST /checkout/validate`.
-- [ ] `POST /checkout/create-order`.
-- [ ] Tạo order code format `YOU-YYYYMMDD-XXXXXX`.
-- [ ] Copy product data vào `OrderItem`.
-- [ ] COD flow hoàn chỉnh.
-- [ ] Deduct inventory khi COD confirmed.
-- [ ] Tăng coupon usage khi order thành công.
-- [ ] Clear/mark cart `CHECKED_OUT`.
-- [ ] Customer `GET /orders/me`.
-- [ ] Customer `GET /orders/me/:id`.
-- [ ] Customer cancel order khi policy cho phép.
+- [x] Tạo module `checkout`.
+- [x] Tạo module `orders`.
+- [x] `POST /checkout/validate`.
+- [x] `POST /checkout/create-order`.
+- [x] Tạo order code format `YOU-YYYYMMDD-XXXXXX`.
+- [x] Copy product data vào `OrderItem`.
+- [x] COD flow hoàn chỉnh.
+- [x] Deduct inventory khi COD confirmed.
+- [x] Tăng coupon usage khi order thành công.
+- [x] Clear/mark cart `CHECKED_OUT`.
+- [x] Customer `GET /orders/me`.
+- [x] Customer `GET /orders/me/:id`.
+- [x] Customer cancel order khi policy cho phép.
 
 Tiêu chí hoàn thành:
 
@@ -160,6 +160,14 @@ Tiêu chí hoàn thành:
 - Payment COD có status `PENDING`.
 - Inventory giảm đúng một lần.
 - Coupon usage tăng đúng một lần.
+
+Ghi chú kiểm tra:
+
+- Đã code đầy đủ Phase 6.
+- Checkout endpoints: `POST /api/v1/checkout/validate`, `POST /api/v1/checkout/create-order`.
+- Customer order endpoints: `GET /api/v1/orders/me`, `GET /api/v1/orders/me/:id`, `POST /api/v1/orders/:id/cancel`.
+- Phase 6 chỉ hoàn chỉnh COD. Online payment provider và callback sẽ làm ở Phase 7.
+- Chưa chạy typecheck/API test trong môi trường hiện tại theo yêu cầu của user. User sẽ tự chạy các lệnh kiểm tra.
 
 ## Phase 7 - Payment Providers
 
@@ -260,5 +268,6 @@ Tiêu chí hoàn thành:
 - Phase 3 Auth And RBAC đã được code.
 - Phase 4 Products And Categories đã được code.
 - Phase 5 Cart And Coupon Calculation đã được code.
-- Chưa có Checkout hoặc Admin APIs đầy đủ.
-- Lần code tiếp theo nên bắt đầu từ Phase 6 - Checkout And Orders.
+- Phase 6 Checkout And Orders đã được code.
+- Chưa có Online Payment Providers hoặc Admin APIs đầy đủ.
+- Lần code tiếp theo nên bắt đầu từ Phase 7 - Payment Providers.
