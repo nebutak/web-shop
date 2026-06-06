@@ -11,20 +11,29 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
     <div className="pb-24 space-y-20 text-stone-800" id="about-us-view">
       
       {/* 1. Page Header Block */}
-      <section className="relative overflow-hidden bg-stone-50 py-16 px-4">
-        {/* Abstract space glow background */}
-        <div className="absolute inset-0 cosmic-banner-glow pointer-events-none" />
-        <div className="absolute bottom-4 left-1/3 text-amber-300 animate-twinkle">✦</div>
-        <div className="absolute top-4 right-1/4 text-red-400 animate-twinkle duration-1000">✦</div>
+      <section className="relative overflow-hidden h-48 sm:h-64 cursor-default rounded-3xl mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto mt-6 shadow-sm border border-stone-800 bg-black flex items-center justify-center">
+        {/* Banner background image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/about-banner.png" 
+            alt="YOUniverse About Banner" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
+        </div>
 
-        <div className="mx-auto max-w-7xl text-center space-y-4 relative z-10">
-          <span className="bg-black text-white text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full">
+        {/* Ambient cosmic elements */}
+        <div className="absolute bottom-4 left-1/3 text-amber-300 animate-twinkle z-10">✦</div>
+        <div className="absolute top-4 right-1/4 text-red-400 animate-twinkle duration-1000 z-10">✦</div>
+
+        <div className="mx-auto max-w-xl text-center space-y-3 relative z-10 px-4">
+          <span className="inline-block bg-amber-500/20 text-amber-300 text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border border-amber-500/30">
             Our Story & Values
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl font-black text-black uppercase">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wider">
             ABOUT YOUNIVERSE
           </h1>
-          <p className="font-sans text-stone-500 text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="font-sans text-stone-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
             A project weaving unique identity and aesthetics from UEH.ISB. Championing the right to be yourself for everyone.
           </p>
         </div>
@@ -42,24 +51,27 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black uppercase tracking-tight leading-tight">
               From cookie-cutter molds to a free universe.
             </h2>
-            <div className="h-1 w-20 bg-black mt-4" />
+            <div className="h-1 w-20 bg-amber-500 mt-4 rounded" />
             
             {/* Ambient ornament graphics background */}
             <div className="hidden lg:block pt-10">
-              <div className="p-4 border-2 border-stone-200 border-dashed rounded-2xl bg-stone-50 flex items-center space-x-3 text-stone-500">
+              <div className="relative p-6 border border-stone-200 rounded-2xl bg-white flex items-center space-x-3 text-stone-600 shadow-sm transition-all duration-300 hover:shadow-md">
                 <Quote className="h-8 w-8 text-amber-500 shrink-0" />
                 <p className="text-[11px] font-mono leading-relaxed">
                   &ldquo;We long to break rigid stereotypes, allowing Gen Z to express their truest, most authentic selves.&rdquo;
                 </p>
+                {/* Decorative stars */}
+                <Sparkles className="absolute -top-2 -right-2 h-4 w-4 text-amber-400 animate-twinkle" />
+                <div className="absolute -bottom-2 -left-2 text-stone-300 text-xs animate-twinkle duration-2000">✦</div>
               </div>
             </div>
           </div>
 
           {/* Right info text paragraph */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <div className="relative bg-white border-2 border-black rounded-3xl p-6 md:p-10 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="relative bg-white border border-stone-200/80 rounded-3xl p-6 md:p-10 shadow-sm hover:shadow-md transition-all duration-300">
               
-              <div className="absolute top-4 right-4 text-stone-200 font-display text-7xl font-bold select-none pointer-events-none">
+              <div className="absolute top-4 right-4 text-stroke-current text-stone-300/30 font-display text-8xl font-black select-none pointer-events-none">
                 UEH
               </div>
               
@@ -88,11 +100,11 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Mission Card */}
-          <div className="bg-gradient-to-br from-blue-50/40 to-white border-2 border-black p-8 rounded-3xl text-left space-y-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-blue-50/20 via-white to-white border border-stone-200/80 p-8 rounded-3xl text-left space-y-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-blue-200/80 hover:shadow-[0_12px_35px_-5px_rgba(59,130,246,0.18)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 h-20 w-20 bg-blue-500/5 rounded-bl-full group-hover:scale-110 duration-500 pointer-events-none" />
             
             <div className="flex items-center space-x-3">
-              <span className="p-2 bg-blue-500 text-white rounded-xl">
+              <span className="p-2 bg-blue-50 text-blue-600 border border-blue-100 rounded-xl flex items-center justify-center">
                 <Flame className="h-5 w-5 animate-pulse" />
               </span>
               <h3 className="font-display text-xl font-extrabold text-black uppercase tracking-tight">
@@ -106,11 +118,11 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           </div>
 
           {/* Vision Card */}
-          <div className="bg-gradient-to-br from-amber-50/40 to-white border-2 border-black p-8 rounded-3xl text-left space-y-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-amber-50/20 via-white to-white border border-stone-200/80 p-8 rounded-3xl text-left space-y-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-amber-200/80 hover:shadow-[0_12px_35px_-5px_rgba(234,179,8,0.18)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 h-20 w-20 bg-amber-500/5 rounded-bl-full group-hover:scale-110 duration-500 pointer-events-none" />
 
             <div className="flex items-center space-x-3">
-              <span className="p-2 bg-amber-500 text-white rounded-xl">
+              <span className="p-2 bg-amber-50 text-amber-600 border border-amber-100 rounded-xl flex items-center justify-center">
                 <Eye className="h-5 w-5" />
               </span>
               <h3 className="font-display text-xl font-extrabold text-black uppercase tracking-tight">
@@ -146,18 +158,36 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           {CORE_VALUES.map((val) => {
             // Give specific letters distinct layout designs (Y: Blue, O: Yellow, U: Red)
             const colorSetup = val.letter === 'Y' 
-              ? { text: 'text-blue-500', glow: 'bg-blue-500/5', border: 'border-blue-100 hover:border-blue-400', mark: 'bg-blue-500' }
+              ? { 
+                  text: 'text-blue-500', 
+                  glow: 'bg-blue-500/5', 
+                  border: 'border-stone-200/80 hover:border-blue-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(59,130,246,0.15)]', 
+                  strokeClass: 'text-stroke-current text-blue-200/30 group-hover:text-blue-300/60' 
+                }
               : val.letter === 'O'
-              ? { text: 'text-amber-500', glow: 'bg-amber-500/5', border: 'border-amber-100 hover:border-amber-400', mark: 'bg-amber-500' }
-              : { text: 'text-red-500', glow: 'bg-rose-500/5', border: 'border-rose-100 hover:border-rose-400', mark: 'bg-red-500' };
+              ? { 
+                  text: 'text-amber-500', 
+                  glow: 'bg-amber-500/5', 
+                  border: 'border-stone-200/80 hover:border-amber-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(234,179,8,0.15)]', 
+                  strokeClass: 'text-stroke-current text-amber-200/30 group-hover:text-amber-300/60' 
+                }
+              : { 
+                  text: 'text-rose-500', 
+                  glow: 'bg-rose-500/5', 
+                  border: 'border-stone-200/80 hover:border-rose-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(244,63,94,0.15)]', 
+                  strokeClass: 'text-stroke-current text-rose-200/30 group-hover:text-rose-300/60' 
+                };
 
             return (
               <div
                 key={val.letter}
-                className={`relative bg-white border-2 rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 group shadow-sm ${colorSetup.border}`}
+                className={`relative bg-white border rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 group shadow-sm ${colorSetup.border} ${colorSetup.hoverShadow}`}
               >
                 {/* Decorative Giant background letter */}
-                <span className="absolute -top-6 -right-2 text-stone-100 font-display text-[150px] font-black select-none pointer-events-none group-hover:scale-110 group-hover:text-stone-200/60 duration-500">
+                <span className={`absolute -top-6 -right-2 font-display text-[150px] font-black select-none pointer-events-none transition-all duration-500 group-hover:scale-108 ${colorSetup.strokeClass}`}>
                   {val.letter}
                 </span>
 
@@ -198,7 +228,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
 
       {/* 6. Active Call-to-Action (CTA Section) */}
       <section className="mx-auto max-w-4xl px-4 text-center">
-        <div className="bg-black text-white rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center space-y-6 shadow-xl border-4 border-stone-100">
+        <div className="bg-black text-white rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center space-y-6 shadow-xl border border-stone-850">
           
           <div className="absolute inset-0 bg-stone-900/30 opacity-60 pointer-events-none" />
           <div className="absolute top-4 left-4 text-amber-400 text-xl animate-twinkle">✦</div>
@@ -220,7 +250,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <button
             id="cta-about-btn"
             onClick={() => onNavigate('products')}
-            className="relative z-10 w-full sm:w-auto rounded-full bg-white hover:bg-stone-100 text-black font-display text-xs font-black tracking-widest uppercase px-8 py-4 transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 text-center flex items-center justify-center space-x-2 cursor-pointer"
+            className="relative z-10 w-full sm:w-auto rounded-full bg-white hover:bg-stone-105 text-black font-display text-xs font-black tracking-widest uppercase px-8 py-4 transition-all duration-305 hover:shadow-2xl hover:scale-105 active:scale-95 text-center flex items-center justify-center space-x-2 cursor-pointer"
           >
             <span>Explore Products Now</span>
             <Sparkles className="h-4 w-4 text-amber-500 animate-twinkle" />
