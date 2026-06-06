@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { PageType, CustomJewelry } from '../types';
 import { CHARM_PRODUCTS } from '../data';
+import MarqueeSlogan from './MarqueeSlogan';
 
 interface HomeViewProps {
   onNavigate: (page: PageType) => void;
@@ -190,6 +191,9 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
           </div>
         </div>
       </section>
+
+      {/* Slogan marquee right below Hero Banner */}
+      <MarqueeSlogan onSloganClick={() => onNavigate('about-us')} />
 
       {/* 2. Khám Phá Các Hành Tinh: Charm Lines Products Showcase */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10" id="charm-lines-section">

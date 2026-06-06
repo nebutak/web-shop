@@ -128,9 +128,11 @@ export default function App() {
         )}
 
         {/* Dynamic Running text slogan after banner or pages as requested (Page 4 & 7) */}
-        <section className="my-6">
-          <MarqueeSlogan onSloganClick={handleSloganClick} />
-        </section>
+        {currentPage !== 'home' && (
+          <section className="my-6">
+            <MarqueeSlogan onSloganClick={handleSloganClick} />
+          </section>
+        )}
 
       </main>
 

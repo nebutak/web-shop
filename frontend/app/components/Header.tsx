@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ShoppingBag, Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShoppingBag, Menu, X, Sparkles } from 'lucide-react';
 import { PageType } from '../types';
 
 interface HeaderProps {
@@ -11,16 +11,31 @@ interface HeaderProps {
 
 export default function Header({ currentPage, onNavigate, cartCount, onOpenCart }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { id: 'home' as PageType, label: 'Home', hoverClass: 'hover:text-blue-500 hover:scale-105 active:scale-95 transition-all duration-300 brand-glow-blue cursor-pointer', dotColor: 'bg-blue-500' },
-    { id: 'products' as PageType, label: 'Our UNIverse', hoverClass: 'hover:text-amber-500 hover:scale-105 active:scale-95 transition-all duration-300 brand-glow-yellow cursor-pointer', dotColor: 'bg-yellow-500' },
+    { id: 'products' as PageType, label: 'Our YOUniverse', hoverClass: 'hover:text-amber-500 hover:scale-105 active:scale-95 transition-all duration-300 brand-glow-yellow cursor-pointer', dotColor: 'bg-yellow-500' },
     { id: 'about-us' as PageType, label: 'About us', hoverClass: 'hover:text-red-500 hover:scale-105 active:scale-95 transition-all duration-300 brand-glow-red cursor-pointer', dotColor: 'bg-red-500' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-stone-100 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+      isScrolled 
+        ? 'border-stone-200/50 bg-white/70 backdrop-blur-lg shadow-sm' 
+        : 'border-stone-100 bg-white/80 backdrop-blur-md'
+    }`}>
+      <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+        isScrolled ? 'h-16' : 'h-20'
+      }`}>
         
         {/* Left Side: Navigation Links (Desktop) */}
         <nav className="hidden md:flex items-center space-x-8" id="desktop-nav">
@@ -31,12 +46,10 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
                 key={item.id}
                 id={`nav-${item.id}`}
                 onClick={() => onNavigate(item.id)}
-                className={`relative py-2 font-display text-base font-semibold tracking-wide text-stone-700 transition-colors ${item.hoverClass}`}
+                className={`group relative py-2 font-display text-base font-semibold tracking-wide text-stone-700 transition-colors ${item.hoverClass}`}
               >
                 {item.label}
-                {isActive && (
-                  <span className={`absolute -bottom-[21px] left-0 right-0 h-[3px] ${item.dotColor} rounded-full transition-all duration-300`} />
-                )}
+                <span className={`absolute -bottom-1 left-0 right-0 h-[2px] ${item.dotColor} rounded-full transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-center ${isActive ? 'scale-x-100' : ''}`} />
               </button>
             );
           })}
@@ -64,8 +77,10 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
             }}
             className="group flex flex-col items-center justify-center focus:outline-none"
           >
-            <span className="font-display text-2xl font-extrabold tracking-widest text-black flex items-center transition-transform hover:scale-105 duration-300">
+            <span className="relative font-display text-2xl font-extrabold tracking-widest text-black flex items-center transition-transform hover:scale-105 duration-300">
+              <Sparkles className="absolute -left-6 top-1.5 h-4 w-4 text-amber-500 opacity-0 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-300 animate-twinkle" />
               YO<span className="text-amber-500 group-hover:text-blue-500 transition-colors duration-500">U</span>niverse
+              <Sparkles className="absolute -right-6 bottom-1.5 h-4 w-4 text-blue-500 opacity-0 group-hover:opacity-100 group-hover:-rotate-12 transition-all duration-300 animate-twinkle" />
             </span>
             <span className="text-[7px] font-mono tracking-[0.35em] text-stone-400 uppercase group-hover:text-red-500 transition-colors duration-500">
               A Galaxy to Hold
@@ -78,9 +93,9 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
           <button
             id="cart-btn"
             onClick={onOpenCart}
-            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:text-stone-900 transition-all duration-300 shadow-sm"
+            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:text-stone-900 hover:border-black hover:shadow-[0_0_12px_rgba(250,204,21,0.15)] transition-all duration-300 shadow-sm"
           >
-            <ShoppingBag className="h-5 w-5 hover:scale-105 transition-transform" />
+            <ShoppingBag className="h-5 w-5 transition-transform group-hover:scale-105 animate-wiggle" />
             {cartCount > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white ring-2 ring-white animate-bounce">
                 {cartCount}
