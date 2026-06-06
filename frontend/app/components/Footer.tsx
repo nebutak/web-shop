@@ -1,4 +1,4 @@
-import { Phone, Sparkles } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { TEAM_MEMBERS } from '../data';
 
 export default function Footer() {
@@ -25,7 +25,7 @@ export default function Footer() {
               </div>
             </div>
             
-            <p className="text-sm text-stone-400 leading-relaxed">
+            <p className="text-sm text-stone-400 leading-relaxed font-sans">
               A place where everyone finds themselves in sparkling nebulae pieces. A custom accessory design project led by students from UEH.ISB.
             </p>
           </div>
@@ -45,16 +45,19 @@ export default function Footer() {
               <h4 className="font-display text-[11px] font-bold uppercase tracking-widest text-stone-400">
                 Contact Us
               </h4>
-              <div className="flex flex-col space-y-2 text-sm text-stone-400">
+              <div className="flex items-center space-x-3 pt-1">
                 {/* Tiktok Link */}
                 <a 
                   href="https://www.tiktok.com/@youniverse_ueh.isb?_r=1&_t=ZS-96wc5zPz4a4" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-cyan-400 transition-colors flex items-center space-x-2 font-display text-xs"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-950 border border-stone-900 text-stone-400 hover:bg-black hover:text-white hover:border-stone-700 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+                  title="TikTok"
+                  aria-label="TikTok"
                 >
-                  <span className="bg-stone-900 p-1.5 rounded-md text-white font-bold border border-stone-800">Tik</span>
-                  <span>Tiktok @youniverse_ueh.isb</span>
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.95 1.15 2.27 1.96 3.71 2.27v3.9c-1.4-.07-2.79-.56-3.95-1.37-.86-.6-1.56-1.38-2.06-2.29-.02 2.64.01 5.28-.01 7.92-.1 1.63-.64 3.23-1.57 4.56-.99 1.39-2.42 2.45-4.05 2.97-1.72.53-3.6.45-5.26-.25-1.59-.68-2.95-1.89-3.78-3.44C-.1 16.59-.16 14.4.42 12.44c.54-1.81 1.7-3.43 3.32-4.47 1.62-1.02 3.59-1.42 5.48-1.08.01 1.39-.02 2.78.01 4.17-1.17-.3-2.43-.07-3.41.62-.97.68-1.56 1.79-1.63 2.99-.07 1.31.52 2.61 1.52 3.42.99.78 2.33 1.05 3.52.71 1.12-.32 2.05-1.16 2.44-2.24.16-.48.24-.99.23-1.49-.02-5.02-.01-10.04-.02-15.06Z" />
+                  </svg>
                 </a>
                 
                 {/* Instagram Link */}
@@ -62,10 +65,15 @@ export default function Footer() {
                   href="https://www.instagram.com/youniverse_since2026/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-pink-400 transition-colors flex items-center space-x-2 font-display text-xs"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-950 border border-stone-900 text-stone-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 hover:shadow-[0_0_15px_rgba(236,72,153,0.3)] cursor-pointer"
+                  title="Instagram"
+                  aria-label="Instagram"
                 >
-                  <span className="bg-stone-900 p-1.5 rounded-md text-pink-500 font-bold border border-stone-800">Ins</span>
-                  <span>Instagram @youniverse_since2026</span>
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
                 </a>
 
                 {/* Facebook Link */}
@@ -73,10 +81,13 @@ export default function Footer() {
                   href="https://www.facebook.com/share/17BFjM2d7T/?mibextid=wwXIfr" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors flex items-center space-x-2 font-display text-xs"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-950 border border-stone-900 text-stone-400 hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] transition-all duration-300 hover:shadow-[0_0_15px_rgba(24,119,242,0.3)] cursor-pointer"
+                  title="Facebook"
+                  aria-label="Facebook"
                 >
-                  <span className="bg-stone-900 p-1.5 rounded-md text-blue-500 font-bold border border-stone-800">Fb</span>
-                  <span>Facebook YOUniverse</span>
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                  </svg>
                 </a>
               </div>
             </div>
