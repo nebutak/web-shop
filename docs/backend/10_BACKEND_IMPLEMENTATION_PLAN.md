@@ -171,21 +171,31 @@ Ghi chú kiểm tra:
 
 ## Phase 7 - Payment Providers
 
-- [ ] Tạo module `payments`.
-- [ ] Tạo interface payment provider.
-- [ ] Tạo `cod.provider.ts`.
-- [ ] Tạo `mock-online.provider.ts` cho development.
-- [ ] Tạo skeleton `vnpay`, `momo`, `stripe`.
-- [ ] Callback/webhook endpoint theo provider.
-- [ ] Verify callback/mock signature.
-- [ ] Payment success idempotent.
-- [ ] Verify amount khớp order total.
+- [x] Tạo module `payments`.
+- [x] Tạo interface payment provider.
+- [x] Tạo `cod.provider.ts`.
+- [x] Tạo `mock-online.provider.ts` cho development.
+- [x] Tạo skeleton `vnpay`, `momo`, `stripe`.
+- [x] Callback/webhook endpoint theo provider.
+- [x] Verify callback/mock signature.
+- [x] Payment success idempotent.
+- [x] Verify amount khớp order total.
 
 Tiêu chí hoàn thành:
 
 - Online mock trả payment URL.
 - Callback success mark payment `PAID`.
 - Callback lặp lại không trừ kho/email/coupon thêm lần nữa.
+
+Ghi chú kiểm tra:
+
+- Đã code đầy đủ Phase 7.
+- Thêm enum Prisma `MOCK_ONLINE` và migration `20260606000000_add_mock_online_payment_provider`.
+- Payment endpoints: `GET /api/v1/payments/callback/:provider`, `POST /api/v1/payments/webhook/:provider`.
+- Mock provider dùng provider param `mock-online` hoặc `MOCK_ONLINE`, ký HMAC bằng `PAYMENT_WEBHOOK_SECRET`.
+- `POST /api/v1/checkout/create-order` với `paymentProvider = "MOCK_ONLINE"` tạo order `PENDING_PAYMENT`, payment `PENDING`, trả `paymentUrl`.
+- Callback success verify chữ ký + amount, mark payment `PAID`, order `PAID`, trừ kho, ghi `InventoryLog`, tăng coupon usage trong transaction.
+- Callback lặp lại với payment đã `PAID` trả success và không chạy lại side effects.
 
 ## Phase 8 - Emails
 
@@ -269,5 +279,6 @@ Tiêu chí hoàn thành:
 - Phase 4 Products And Categories đã được code.
 - Phase 5 Cart And Coupon Calculation đã được code.
 - Phase 6 Checkout And Orders đã được code.
-- Chưa có Online Payment Providers hoặc Admin APIs đầy đủ.
-- Lần code tiếp theo nên bắt đầu từ Phase 7 - Payment Providers.
+- Phase 7 Payment Providers đã được code.
+- Chưa có Email module hoặc Admin APIs đầy đủ.
+- Lần code tiếp theo nên bắt đầu từ Phase 8 - Emails.
