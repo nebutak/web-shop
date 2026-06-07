@@ -54,7 +54,7 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
                 key={item.id}
                 id={`nav-${item.id}`}
                 onClick={() => onNavigate(item.id)}
-                className={`group relative py-2 font-display text-base font-semibold tracking-wide text-stone-700 transition-all duration-500 ease-out ${item.hoverClass}`}
+                className={`group relative py-2 font-display text-base font-semibold tracking-wide text-stone-700 transition-all duration-500 ease-out focus:outline-none ${item.hoverClass}`}
               >
                 {item.label}
                 <span className={`absolute -bottom-1 left-0 right-0 h-[2px] ${item.dotColor} rounded-full transition-transform duration-500 ease-out transform scale-x-0 group-hover:scale-x-100 origin-center ${isActive ? 'scale-x-100' : ''}`} />
@@ -101,7 +101,7 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
           <button
             id="cart-btn"
             onClick={onOpenCart}
-            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:text-stone-900 hover:border-black hover:shadow-[0_0_12px_rgba(250,204,21,0.15)] transition-all duration-300 shadow-sm"
+            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 hover:text-stone-900 hover:border-black hover:shadow-[0_0_12px_rgba(250,204,21,0.15)] focus:outline-none transition-all duration-300 shadow-sm"
           >
             <ShoppingBag className="h-5 w-5 transition-transform group-hover:scale-105 animate-wiggle" />
             {cartCount > 0 && (
@@ -127,7 +127,7 @@ export default function Header({ currentPage, onNavigate, cartCount, onOpenCart 
                     onNavigate(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`block w-full text-left py-3 px-4 font-display text-lg font-bold rounded-lg transition-colors ${
+                  className={`block w-full text-left py-3 px-4 font-display text-lg font-bold rounded-lg transition-colors focus:outline-none ${
                     isActive 
                       ? 'bg-stone-50 text-stone-900 border-l-4 border-amber-500' 
                       : 'text-stone-600 hover:bg-stone-50'

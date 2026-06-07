@@ -42,6 +42,73 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
   // Product Line Showcase states
   const [activeCharmIndex, setActiveCharmIndex] = useState<number | null>(null);
 
+  // Hero Carousel Slides Data
+  const heroSlides = [
+    {
+      id: 'astra',
+      title: 'ASTRA CORE',
+      tagline: 'Your Energy Spark',
+      footerTitle: 'CLASSIC ORBIT CORE',
+      footerDesc: 'Custom modular jewelry allows you to combine Star sign initials with sweet heart elements.',
+      badgeText: 'Blink Blink',
+      badgeClass: 'bg-amber-500/10 text-amber-700 border-amber-500/20',
+      gradientFrom: 'from-amber-200',
+      glowColor: 'bg-stone-50/50 border-stone-100/85',
+      centerIcon: Sparkles,
+      centerIconColor: 'text-amber-500',
+      orbitLeftIcon: Heart,
+      orbitLeftColor: 'text-blue-500',
+      orbitRightIcon: Compass,
+      orbitRightColor: 'text-red-500',
+      imageUrl: '/images/astra-core.png',
+    },
+    {
+      id: 'sirius',
+      title: 'SIRIUS CORE',
+      tagline: 'Deep Love Connection',
+      footerTitle: 'SIRIUS HEART CORE',
+      footerDesc: 'Connect your closest souls with warm customizable charms designed to capture true memories.',
+      badgeText: 'Deep Vibe',
+      badgeClass: 'bg-rose-500/10 text-rose-700 border-rose-500/20',
+      gradientFrom: 'from-rose-200',
+      glowColor: 'bg-rose-50/40 border-rose-100/50',
+      centerIcon: Heart,
+      centerIconColor: 'text-rose-500',
+      orbitLeftIcon: Sparkles,
+      orbitLeftColor: 'text-amber-500',
+      orbitRightIcon: Compass,
+      orbitRightColor: 'text-blue-500',
+      imageUrl: '/images/sirius-core.png',
+    },
+    {
+      id: 'polaris',
+      title: 'POLARIS CORE',
+      tagline: 'Guide Your Path',
+      footerTitle: 'POLARIS COMPASS CORE',
+      footerDesc: 'Set your own coordinates and guide your journey with high-end stellar coordinates engraving.',
+      badgeText: 'True North',
+      badgeClass: 'bg-blue-500/10 text-blue-700 border-blue-500/20',
+      gradientFrom: 'from-blue-200',
+      glowColor: 'bg-blue-50/40 border-blue-100/50',
+      centerIcon: Compass,
+      centerIconColor: 'text-blue-500',
+      orbitLeftIcon: Sparkles,
+      orbitLeftColor: 'text-amber-500',
+      orbitRightIcon: Heart,
+      orbitRightColor: 'text-rose-500',
+      imageUrl: '/images/polaris-core.png',
+    },
+  ];
+
+  const [heroCarouselIndex, setHeroCarouselIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroCarouselIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
   // Customizer live preview state representing the "How to Build Your YOUniverse" 3-step engine
   const [jewelryType, setJewelryType] = useState<'bracelet' | 'necklace' | 'cord'>('bracelet');
   const [vibeColor, setVibeColor] = useState<string>('blue'); // 'blue' | 'yellow' | 'red' | 'indigo'
@@ -143,21 +210,11 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
         </div>
         
-        {/* Decorative blinking stars */}
-        <div className="absolute top-12 left-10 text-amber-300 animate-twinkle z-10">✦</div>
-        <div className="absolute top-24 right-1/4 text-red-300 animate-twinkle duration-1000 z-10">✦</div>
-        <div className="absolute bottom-16 left-1/3 text-blue-300 animate-twinkle duration-2000 z-10">✦</div>
-        <div className="absolute bottom-1/2 right-12 text-stone-300 animate-twinkle z-10">✦</div>
-
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             
             {/* Left intro text info */}
             <div className="space-y-6 text-left">
-              <div className="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-300 text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-amber-500/30 shadow-sm">
-                <Sparkles className="h-3.5 w-3.5 text-yellow-300 animate-spin-slow" />
-                <span>Launch Edition 2026</span>
-              </div>
               
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-none uppercase">
                 CREATE YOUR <br className="hidden sm:inline" />
@@ -188,63 +245,109 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
 
             {/* Right aesthetic visual interactive card (The missing banner is replaced with stellar craft) */}
             <div className="relative flex justify-center">
-              <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-3xl bg-white/95 backdrop-blur-md border border-stone-200/80 shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-6 overflow-hidden flex flex-col justify-between group hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)] hover:border-blue-200/80 transition-all duration-500 hover:-translate-y-1">
-                <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-br from-amber-200 to-transparent opacity-40 rounded-bl-full pointer-events-none" />
+              <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-3xl overflow-hidden group hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)] hover:border-blue-200/80 transition-all duration-500 hover:-translate-y-1">
                 
-                {/* Visual Header of Card */}
-                <div className="flex justify-between items-start">
-                  <div className="font-mono text-[9px] text-stone-400 uppercase tracking-widest">
-                    YOUniverse Accessory Co.
-                  </div>
-                  <span className="bg-amber-500/10 text-amber-700 text-[9px] font-mono uppercase font-bold py-0.5 px-2.5 rounded-full border border-amber-500/20">
-                    Blink Blink
-                  </span>
+                {heroSlides.map((slide, idx) => {
+                  const isActive = idx === heroCarouselIndex;
+                  
+                  // Compute sliding positioning class
+                  let slideTransformClass = "";
+                  if (isActive) {
+                    slideTransformClass = "translate-x-0 opacity-100 scale-100 z-10";
+                  } else if (
+                    idx < heroCarouselIndex || 
+                    (heroCarouselIndex === 0 && idx === heroSlides.length - 1)
+                  ) {
+                    slideTransformClass = "-translate-x-full opacity-0 scale-95 z-0 pointer-events-none";
+                  } else {
+                    slideTransformClass = "translate-x-full opacity-0 scale-95 z-0 pointer-events-none";
+                  }
+
+                  return (
+                    <div
+                      key={slide.id}
+                      className={`absolute inset-0 p-6 flex flex-col justify-between transition-all duration-1000 ease-in-out ${slideTransformClass}`}
+                    >
+                      {/* Full Background Slide Image */}
+                      <img 
+                        src={slide.imageUrl} 
+                        alt={slide.title} 
+                        className="absolute inset-0 w-full h-full object-cover select-none z-0 transition-transform duration-1000 group-hover:scale-105" 
+                      />
+
+                      {/* Legibility gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/45 z-10 pointer-events-none" />
+
+                      {/* Visual Header of Card */}
+                      <div className="relative z-20 flex justify-between items-start">
+                        <div className="font-mono text-[9px] text-stone-350 uppercase tracking-widest">
+                          YOUniverse Accessory Co.
+                        </div>
+                        <span className={`text-[9px] font-mono uppercase font-bold py-0.5 px-2.5 rounded-full border bg-white/10 text-white border-white/20`}>
+                          {slide.badgeText}
+                        </span>
+                      </div>
+
+                      {/* Center Orbit Path / Space illustration removed since image is full size background */}
+                      <div className="my-auto flex flex-col items-center justify-center relative z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-505">
+                        <div className="bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-[9px] font-mono text-stone-300 uppercase tracking-widest">
+                          [ SYS_VISUAL // ONLINE ]
+                        </div>
+                      </div>
+
+                      {/* Visual Footer of Card */}
+                      <div className="relative z-20 space-y-1 text-left">
+                        <div className="flex items-center space-x-1.5 text-amber-400 text-[10px] font-mono tracking-wider uppercase font-bold">
+                          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+                          <span>{slide.title}</span>
+                        </div>
+                        <p className="font-display text-lg font-extrabold text-white uppercase tracking-tight">
+                          {slide.footerTitle}
+                        </p>
+                        <p className="font-sans text-xs text-stone-300 line-clamp-2">
+                          {slide.footerDesc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Dot/Dash Indicators (larger, colored pill-shaped dashes with glowing shadows) */}
+                <div className="absolute bottom-5 left-0 right-0 flex justify-center space-x-2 z-20">
+                  {heroSlides.map((slide, idx) => {
+                    const isActive = idx === heroCarouselIndex;
+                    // Dynamic active color matching slide theme
+                    const activeColorClass = idx === 0 
+                      ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]' 
+                      : idx === 1 
+                      ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]' 
+                      : 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]';
+
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setHeroCarouselIndex(idx)}
+                        className={`h-2.5 rounded-full transition-all duration-500 focus:outline-none cursor-pointer ${
+                          isActive 
+                            ? `${activeColorClass} w-10` 
+                            : 'bg-stone-300/80 hover:bg-stone-400 w-5'
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                        title={slide.title}
+                      />
+                    );
+                  })}
                 </div>
 
-                {/* Central Celestial Ornament Graphic */}
-                <div className="my-auto flex flex-col items-center">
-                  <div className="relative w-44 h-44 flex items-center justify-center">
-                    {/* Ring Path Orbit */}
-                    <div className="absolute inset-0 rounded-full border border-dashed border-stone-200 animate-spin-slow" />
-                    
-                    {/* Inner glowing core space elements */}
-                    <div className="absolute h-32 w-32 rounded-full bg-stone-50/50 border border-stone-100/85 flex items-center justify-center animate-pulse-glow" />
-                    
-                    {/* Center Charm visual design */}
-                    <div className="relative z-10 flex flex-col items-center justify-center text-center">
-                      <Sparkles className="h-10 w-10 text-amber-500 animate-twinkle" />
-                      <span className="mt-2 font-display text-sm font-extrabold tracking-widest uppercase text-black">
-                        ASTRA CORE
-                      </span>
-                      <span className="text-[8px] font-mono text-stone-400 capitalize">
-                        Your Energy Spark
-                      </span>
-                    </div>
-
-                    {/* Orbiting small charms */}
-                    <div className="absolute top-2 left-6 h-8 w-8 rounded-full bg-white border border-stone-200 shadow-sm flex items-center justify-center text-blue-500 animate-float hover:scale-115 transition-transform duration-300">
-                      <Heart className="h-3.5 w-3.5" />
-                    </div>
-                    <div className="absolute bottom-6 right-2 h-8 w-8 rounded-full bg-white border border-stone-200 shadow-sm flex items-center justify-center text-red-500 animate-float duration-1500 hover:scale-115 transition-transform duration-300">
-                      <Compass className="h-3.5 w-3.5" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Visual Footer of Card */}
-                <div className="space-y-1 text-left">
-                  <p className="font-display text-lg font-extrabold text-black uppercase tracking-tight">
-                    CLASSIC ORBIT CORE
-                  </p>
-                  <p className="font-sans text-xs text-stone-500 line-clamp-2">
-                    Custom modular jewelry allows you to combine Star sign initials with sweet heart elements.
-                  </p>
-                </div>
               </div>
 
               {/* Backing structural highlights */}
-              <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-blue-500/10 rounded-full filter blur-2xl opacity-60 -z-10 animate-pulse-glow" />
-              <div className="absolute -top-6 -right-6 w-36 h-36 bg-amber-500/10 rounded-full filter blur-2xl opacity-70 -z-10 animate-pulse-glow duration-3000" />
+              <div className={`absolute -bottom-6 -left-6 w-36 h-36 rounded-full filter blur-2xl opacity-60 -z-10 animate-pulse-glow transition-all duration-700 ${
+                heroCarouselIndex === 0 ? 'bg-blue-500/10' : heroCarouselIndex === 1 ? 'bg-amber-500/10' : 'bg-rose-500/10'
+              }`} />
+              <div className={`absolute -top-6 -right-6 w-36 h-36 rounded-full filter blur-2xl opacity-70 -z-10 animate-pulse-glow duration-3000 transition-all duration-700 ${
+                heroCarouselIndex === 0 ? 'bg-amber-500/10' : heroCarouselIndex === 1 ? 'bg-rose-500/10' : 'bg-blue-500/10'
+              }`} />
             </div>
 
           </div>
@@ -255,12 +358,9 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
       <MarqueeSlogan onSloganClick={() => onNavigate('about-us')} />
 
       {/* 2. Khám Phá Các Hành Tinh: Charm Lines Products Showcase */}
-      <section className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10" id="charm-lines-section">
+      <section className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 md:mt-28 space-y-10" id="charm-lines-section">
         
         <div className="text-center space-y-3">
-          <span className="inline-block bg-amber-500/10 text-amber-600 border border-amber-500/20 text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full">
-            Product Line
-          </span>
           <h3 className="font-display text-3xl font-extrabold tracking-tight text-stone-900 uppercase">
             Explore the Planets
           </h3>
@@ -383,14 +483,11 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
       {/* 3. How to Build Your YOUniverse (Hướng dẫn 3 bước - Customized Workshop) */}
       <section 
         id="customizer-workshop" 
-        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16"
+        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24 md:mt-36 space-y-10 md:space-y-12"
       >
         
         {/* Header segment of workshop instructions */}
         <div className="text-center space-y-3">
-          <span className="inline-block bg-blue-500/10 text-blue-600 border border-blue-500/20 text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full">
-            Interactive Customizer
-          </span>
           <h3 className="font-display text-3xl font-extrabold text-stone-900 uppercase tracking-tight">
             How to Build Your YOUniverse
           </h3>
@@ -400,394 +497,96 @@ export default function HomeView({ onNavigate, onAddCustomToCart }: HomeViewProp
         </div>
 
         {/* Orbit Timeline (5A: Visual 3 steps planets flow) */}
-        <div className="relative py-4">
-          {/* Dashed Orbit Line (Desktop only) */}
-          <div className="absolute top-1/2 left-[15%] right-[15%] h-[2px] border-t border-dashed border-stone-200 -translate-y-1/2 hidden md:block z-0" />
+        <div className="relative py-6">
+          {/* Glowing Gradient Orbit Line (Desktop only) */}
+          <div className="absolute top-1/2 left-[15%] right-[15%] h-[3px] bg-gradient-to-r from-blue-300 via-amber-300 to-rose-300 -translate-y-1/2 hidden md:block z-0 opacity-80 blur-[0.5px]" />
+          <div className="absolute top-1/2 left-[15%] right-[15%] h-[3px] bg-gradient-to-r from-blue-400 via-amber-400 to-rose-400 -translate-y-1/2 hidden md:block z-0 opacity-30 blur-[4px] animate-pulse-glow" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {/* Step 1 Card */}
-            <div className="group flex flex-col items-center text-center space-y-4 bg-white/60 backdrop-blur-md border border-stone-200/60 p-6 rounded-[28px] hover:border-blue-300 hover:shadow-[0_15px_35px_-10px_rgba(59,130,246,0.15)] transition-all duration-500 hover:-translate-y-1">
-              <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase">[ STEP_01 // ATMOSPHERE ]</span>
-              <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-blue-100/40 border border-blue-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
-                {/* Orbiting halo effect */}
-                <div className="absolute inset-[-4px] rounded-full border border-dashed border-blue-400/30 animate-spin-slow group-hover:border-blue-400/80 transition-colors duration-500" />
-                <Sparkles className="h-7 w-7 text-blue-500 animate-twinkle" />
-                <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-[10px] font-black text-white shadow-md">1</span>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900">1. Set Your Vibe</h4>
-                <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
-                  Start with your mood, your energy, and the little details that make you feel like you.
-                </p>
+            <div className="group relative rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 cursor-default flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)]">
+              {/* Flowing Gradient Border (on hover) */}
+              <div className="absolute -inset-[1.5px] rounded-[29px] bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 animate-flow-gradient" />
+              
+              {/* Inner Card Background Mask */}
+              <div className="absolute inset-0 rounded-[28px] bg-white/90 backdrop-blur-md border border-stone-200/60 z-10 pointer-events-none group-hover:border-transparent transition-all duration-500" />
+
+              {/* Content Wrapper */}
+              <div className="relative z-20 p-6 flex flex-col items-center space-y-4">
+                <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase group-hover:text-blue-500 transition-colors duration-300">[ SYS_CORE // 01 ]</span>
+                <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-blue-50/50 to-blue-100/30 border border-blue-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                  {/* Orbiting halo effect */}
+                  <div className="absolute inset-[-4px] rounded-full border border-dashed border-blue-400/30 animate-spin-slow group-hover:border-blue-400/80 transition-colors duration-500" />
+                  <Sparkles className="h-7 w-7 text-blue-500 animate-twinkle" />
+                  
+                  {/* Glowing step badge */}
+                  <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-[10px] font-black text-white shadow-md shadow-blue-500/20 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">1</span>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900 group-hover:text-blue-500 transition-colors">1. Set Your Vibe</h4>
+                  <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
+                    Start with your mood, your energy, and the little details that make you feel like you.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Step 2 Card */}
-            <div className="group flex flex-col items-center text-center space-y-4 bg-white/60 backdrop-blur-md border border-stone-200/60 p-6 rounded-[28px] hover:border-amber-300 hover:shadow-[0_15px_35px_-10px_rgba(234,179,8,0.15)] transition-all duration-500 hover:-translate-y-1">
-              <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase">[ STEP_02 // CHARM_ARRAY ]</span>
-              <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-50 to-amber-100/40 border border-amber-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
-                {/* Orbiting halo effect */}
-                <div className="absolute inset-[-4px] rounded-full border border-dashed border-amber-400/30 animate-spin-slow group-hover:border-amber-400/80 transition-colors duration-500" style={{ animationDirection: 'reverse' }} />
-                <Heart className="h-7 w-7 text-amber-500 animate-float" />
-                <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-[10px] font-black text-white shadow-md">2</span>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900">2. Mix & Match</h4>
-                <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
-                  Choose the charm line that speaks for your name, your passion, or your guiding quote.
-                </p>
+            <div className="group relative rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 cursor-default flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(234,179,8,0.08)]">
+              {/* Flowing Gradient Border (on hover) */}
+              <div className="absolute -inset-[1.5px] rounded-[29px] bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 animate-flow-gradient" />
+              
+              {/* Inner Card Background Mask */}
+              <div className="absolute inset-0 rounded-[28px] bg-white/90 backdrop-blur-md border border-stone-200/60 z-10 pointer-events-none group-hover:border-transparent transition-all duration-500" />
+
+              {/* Content Wrapper */}
+              <div className="relative z-20 p-6 flex flex-col items-center space-y-4">
+                <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase group-hover:text-amber-500 transition-colors duration-300">[ CHARM_CONFIG // 02 ]</span>
+                <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-50/50 to-amber-100/30 border border-amber-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                  {/* Orbiting halo effect */}
+                  <div className="absolute inset-[-4px] rounded-full border border-dashed border-amber-400/30 animate-spin-slow group-hover:border-amber-400/80 transition-colors duration-500" style={{ animationDirection: 'reverse' }} />
+                  <Heart className="h-7 w-7 text-amber-500 animate-float" />
+                  
+                  {/* Glowing step badge */}
+                  <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-[10px] font-black text-white shadow-md shadow-amber-500/20 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">2</span>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900 group-hover:text-amber-500 transition-colors">2. Mix & Match</h4>
+                  <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
+                    Choose the charm line that speaks for your name, your passion, or your guiding quote.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Step 3 Card */}
-            <div className="group flex flex-col items-center text-center space-y-4 bg-white/60 backdrop-blur-md border border-stone-200/60 p-6 rounded-[28px] hover:border-rose-300 hover:shadow-[0_15px_35px_-10px_rgba(244,63,94,0.15)] transition-all duration-500 hover:-translate-y-1">
-              <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase">[ STEP_03 // ENGRAVE ]</span>
-              <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-rose-50 to-rose-100/40 border border-rose-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
-                {/* Orbiting halo effect */}
-                <div className="absolute inset-[-4px] rounded-full border border-dashed border-rose-400/30 animate-spin-slow group-hover:border-rose-400/80 transition-colors duration-500" />
-                <Compass className="h-7 w-7 text-rose-500 animate-spin-slow" />
-                <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-rose-500 text-[10px] font-black text-white shadow-md">3</span>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900">3. Tell Your Story</h4>
-                <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
-                  Carry your tiny universe with you and let it say what words sometimes cannot.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Dynamic Interactive Workshop Widget (5B: Glassmorphism Customizer UI) */}
-        <div className={`bg-white/70 backdrop-blur-xl border border-stone-200/80 p-6 md:p-10 rounded-[36px] transition-all duration-700 grid grid-cols-1 lg:grid-cols-12 gap-10 relative overflow-hidden ${glowShadows}`}>
-          
-          {/* LEFT 5 columns: Interactive controls structured inside 3 standard steps */}
-          <div className="lg:col-span-5 space-y-8 flex flex-col justify-between order-2 lg:order-1">
-            
-            <div className="space-y-6">
-              {/* Step 1: Set Your Vibe */}
-              <div className="border-l-2 border-blue-500 pl-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-[10px] font-black text-white shrink-0">
-                      1
-                    </span>
-                    <h4 className="font-display text-xs font-black uppercase tracking-widest text-stone-800">
-                      Set Your Vibe
-                    </h4>
-                  </div>
-                  <span className="text-[8px] font-mono text-stone-400 font-bold uppercase">[ VIBE_CORE ]</span>
-                </div>
-                
-                <p className="font-sans text-xs text-stone-500">
-                  Select the light aura for your cosmic atmosphere:
-                </p>
-
-                {/* Vibe selection swatches */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {vibeOptions.map((v) => (
-                    <button
-                      key={v.id}
-                      onClick={() => setVibeColor(v.id)}
-                      className={`flex items-center space-x-1.5 px-3 py-2 rounded-full border text-xs font-mono font-semibold transition-all duration-300 ${
-                        vibeColor === v.id
-                          ? 'border-stone-900 bg-stone-900 text-white shadow-md shadow-stone-900/10'
-                          : 'border-stone-200 bg-white/60 text-stone-600 hover:border-stone-400 hover:bg-stone-50'
-                      }`}
-                    >
-                      <span className={`h-3.5 w-3.5 rounded-full ${v.colorClass}`} />
-                      <span>{v.label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Step 2: Mix & Match Astra, Sirius, Polaris */}
-              <div className="border-l-2 border-amber-500 pl-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-[10px] font-black text-white shrink-0">
-                      2
-                    </span>
-                    <h4 className="font-display text-xs font-black uppercase tracking-widest text-stone-800">
-                      Mix & Match
-                    </h4>
-                  </div>
-                  <span className="text-[8px] font-mono text-stone-400 font-bold uppercase">[ CHARM_ARRAY_CONFIG ]</span>
-                </div>
-                
-                <p className="font-sans text-xs text-stone-500">
-                  Click to add up to 6 unique charms to your chain:
-                </p>
-
-                <div className="flex gap-2 pt-1 flex-wrap">
-                  {charmOptions.map((c) => (
-                    <button
-                      key={c.id}
-                      onClick={() => handleAddCharm(c.id)}
-                      className="group flex items-center space-x-1.5 border border-stone-200 bg-white/60 hover:border-stone-900 hover:bg-white p-2.5 rounded-xl text-xs font-mono font-semibold transition-all shadow-sm cursor-pointer"
-                      title={`Add ${c.label}`}
-                    >
-                      <c.icon className={`h-4 w-4 ${c.color}`} />
-                      <span className="text-stone-700 font-sans">{c.label}</span>
-                      <Plus className="h-3.5 w-3.5 text-stone-400 group-hover:text-black" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Step 3: Tell your story */}
-              <div className="border-l-2 border-rose-500 pl-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-500 text-[10px] font-black text-white shrink-0">
-                      3
-                    </span>
-                    <h4 className="font-display text-xs font-black uppercase tracking-widest text-stone-800">
-                      Tell Your Story
-                    </h4>
-                  </div>
-                  <span className="text-[8px] font-mono text-stone-400 font-bold uppercase">[ INITIALS_ENGRAVER ]</span>
-                </div>
-                
-                <p className="font-sans text-xs text-stone-500">
-                  Enter your initials (engraved on Astra charm) to preview:
-                </p>
-
-                <div className="relative">
-                  <input
-                    type="text"
-                    maxLength={10}
-                    value={customName}
-                    onChange={(e) => setCustomName(e.target.value)}
-                    className="w-full border border-stone-200/85 rounded-xl px-4 py-2.5 text-sm font-mono tracking-widest font-extrabold text-black focus:border-stone-900 focus:ring-1 focus:ring-stone-900 focus:outline-none placeholder-stone-400 bg-white/80 transition-all z-10 relative"
-                    placeholder="E.g. ANA / ALEX..."
-                  />
-                  <span className="absolute right-3 top-3 text-[10px] text-stone-400 font-mono z-10">
-                    {customName.length}/10
-                  </span>
-                </div>
-
-                {/* Hologram Terminal Screen */}
-                <div className="mt-3 bg-stone-950 text-emerald-400 border border-emerald-500/20 rounded-xl p-4 font-mono text-[10px] leading-relaxed space-y-1.5 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)] relative overflow-hidden select-none">
-                  {/* Glowing scanlines overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none" />
-                  
-                  <div className="flex items-center space-x-1.5 text-emerald-500/80">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>SYS_STATUS: READY // ONLINE</span>
-                  </div>
-                  <div>&gt; ENGINE_AURA: {vibeColor.toUpperCase()}_PULSE</div>
-                  <div className="flex items-center">
-                    <span>&gt; ENGRAVE_TEXT: [ {customName.toUpperCase() || '...'} ]</span>
-                    <span className="ml-1 h-3.5 w-1.5 bg-emerald-450 animate-terminal-blink" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Actions Panel */}
-            <div className="pt-4 border-t border-stone-150 space-y-3 text-left">
-              <button
-                onClick={handleCreateAndAdd}
-                className="w-full rounded-2xl bg-black hover:bg-stone-900 border border-black text-white py-4 px-6 font-display text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <Gem className="h-4 w-4 text-yellow-300 animate-spin-slow" />
-                <span>Add Custom Design to Cart</span>
-              </button>
-
-              <button
-                onClick={resetCustomizer}
-                className="w-full text-center text-xs font-mono text-stone-400 hover:text-red-500 transition-colors py-1 cursor-pointer"
-              >
-                Reset Customizer
-              </button>
-            </div>
-
-          </div>
-
-          {/* RIGHT 7 columns: High-performance live rendering preview box */}
-          <div className="lg:col-span-7 flex flex-col justify-between order-1 lg:order-2">
-            
-            {/* Live Preview Display Box */}
-            <div className="flex-1 min-h-[300px] border border-stone-200/80 bg-white/95 backdrop-blur-md rounded-[28px] p-6 relative flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-500">
+            <div className="group relative rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 cursor-default flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(244,63,94,0.08)]">
+              {/* Flowing Gradient Border (on hover) */}
+              <div className="absolute -inset-[1.5px] rounded-[29px] bg-gradient-to-r from-rose-400 via-red-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 animate-flow-gradient" />
               
-              {/* Background ambient lighting based on selected pulse vibe color */}
-              <div 
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  vibeColor === 'blue' ? 'bg-blue-500/10' : 
-                  vibeColor === 'yellow' ? 'bg-amber-500/10' : 
-                  vibeColor === 'red' ? 'bg-rose-500/10' : 
-                  'bg-indigo-500/10'
-                }`} 
-              />
-              
-              {/* Grid guide markings to mimic design workshop look */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800c_1px,transparent_1px),linear-gradient(to_bottom,#8080800c_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+              {/* Inner Card Background Mask */}
+              <div className="absolute inset-0 rounded-[28px] bg-white/90 backdrop-blur-md border border-stone-200/60 z-10 pointer-events-none group-hover:border-transparent transition-all duration-500" />
 
-              {/* Status Header of Workshop Canvas */}
-              <div className="flex justify-between items-center relative z-10 text-[9px] font-mono tracking-widest text-stone-400 font-bold">
-                <span className="flex items-center space-x-1.5 uppercase">
-                  <span className={`h-2 w-2 rounded-full ${
-                    vibeColor === 'blue' ? 'bg-blue-500' :
-                    vibeColor === 'yellow' ? 'bg-yellow-500' :
-                    vibeColor === 'red' ? 'bg-red-500' :
-                    'bg-indigo-500'
-                  } animate-ping`} />
-                  <span>[ RADAR_PREVIEW // ONLINE ]</span>
-                </span>
-                <span className="uppercase bg-stone-100 border border-stone-200/60 py-0.5 px-2.5 rounded-full text-stone-600 font-bold">
-                  VIBE: {vibeColor}
-                </span>
-              </div>
-
-              {/* Jewelry chain preview base rendering */}
-              <div className="relative my-auto flex items-center justify-center p-8">
-                
-                {/* Simulated Glow ring behind */}
-                <div className={`absolute h-48 w-48 rounded-full filter blur-2xl opacity-20 animate-pulse-glow ${
-                  vibeColor === 'blue' ? 'bg-blue-400' :
-                  vibeColor === 'yellow' ? 'bg-amber-400' :
-                  vibeColor === 'red' ? 'bg-rose-400' :
-                  'bg-indigo-400'
-                }`} />
-
-                {/* Jewelry selection graphic core */}
-                <div className="relative w-full max-w-[280px] h-32 flex items-center justify-center">
+              {/* Content Wrapper */}
+              <div className="relative z-20 p-6 flex flex-col items-center space-y-4">
+                <span className="text-[9px] font-mono tracking-widest text-stone-400 font-bold uppercase group-hover:text-rose-500 transition-colors duration-300">[ ENGRAVER_INIT // 03 ]</span>
+                <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-rose-50/50 to-rose-100/30 border border-rose-200 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                  {/* Orbiting halo effect */}
+                  <div className="absolute inset-[-4px] rounded-full border border-dashed border-rose-400/30 animate-spin-slow group-hover:border-rose-400/80 transition-colors duration-500" />
+                  <Compass className="h-7 w-7 text-rose-500 animate-spin-slow" />
                   
-                  {/* Necklace hook loop */}
-                  {jewelryType === 'necklace' && (
-                    <div className="absolute top-0 w-28 h-40 rounded-full border-t border-stone-300 group-hover:scale-105 duration-300" />
-                  )}
-
-                  {/* Bracelet / Jewelry Base Chain bar line */}
-                  <div className="h-2 w-full rounded-full bg-stone-200 border border-stone-300 shadow-sm relative flex items-center justify-around px-8">
-                    {/* Metal clamps */}
-                    <div className="absolute left-1 h-3.5 w-1.5 rounded-sm bg-stone-400" />
-                    <div className="absolute right-1 h-3.5 w-1.5 rounded-sm bg-stone-400" />
-                    
-                    {/* Active item charms array visualization */}
-                    {selectedCharms.length === 0 ? (
-                      <span className="absolute text-[10px] font-mono font-medium text-stone-400 animate-pulse tracking-wide italic">
-                        No charms on chain. Choose charms above!
-                      </span>
-                    ) : (
-                      <div className="absolute inset-x-4 sm:inset-x-8 flex justify-center items-center gap-1.5 sm:gap-2">
-                        {selectedCharms.map((charmId, charmIdx) => {
-                          const matchingCharm = CHARM_PRODUCTS.find((cp) => cp.id === charmId);
-                          const isAstra = charmId === 'astra';
-                          
-                          let charmIconColor = 'text-blue-500';
-                          let charmBgColor = 'bg-blue-50 border-blue-200';
-                          
-                          if (charmId === 'sirius') {
-                            charmIconColor = 'text-amber-500';
-                            charmBgColor = 'bg-amber-50 border-amber-200';
-                          } else if (charmId === 'polaris') {
-                            charmIconColor = 'text-rose-500';
-                            charmBgColor = 'bg-rose-50 border-rose-200';
-                          }
-
-                          return (
-                            <div 
-                              key={charmIdx}
-                              className={`group/charm relative flex flex-col items-center bg-white border ${charmBgColor} p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-md cursor-pointer hover:scale-110 active:scale-95 transition-all text-center animate-float`}
-                              style={{ animationDelay: `${charmIdx * 0.4}s` }}
-                            >
-                              <button 
-                                onClick={() => handleRemoveCharm(charmIdx)}
-                                className="absolute -top-1.5 -right-1.5 hidden group-hover/charm:flex h-4 w-4 bg-red-500 text-white rounded-full items-center justify-center p-0.5 hover:bg-red-600 shadow"
-                                title="Remove Charm"
-                              >
-                                <Trash2 className="h-3 w-3" />
-                              </button>
-
-                              {charmId === 'astra' && <Sparkles className={`h-4.5 w-4.5 ${charmIconColor} animate-twinkle`} />}
-                              {charmId === 'sirius' && <Heart className={`h-4.5 w-4.5 ${charmIconColor}`} />}
-                              {charmId === 'polaris' && <Compass className={`h-4.5 w-4.5 ${charmIconColor}`} />}
-
-                              {/* Live Custom named engraving display on Astra */}
-                              {isAstra && (
-                                <span className="mt-0.5 text-[8px] font-mono font-bold uppercase tracking-tight text-black max-w-[40px] truncate">
-                                  {customName || 'Astra'}
-                                </span>
-                              )}
-                              {!isAstra && (
-                                <span className="mt-0.5 text-[6px] font-sans tracking-wide text-stone-400 capitalize">
-                                  {matchingCharm?.badge}
-                                </span>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-
-                  </div>
-
+                  {/* Glowing step badge */}
+                  <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-rose-500 text-[10px] font-black text-white shadow-md shadow-rose-500/20 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">3</span>
                 </div>
-
-              </div>
-
-              {/* Success Notification overlay inside panel */}
-              {successMessage && (
-                <div className="absolute top-4 inset-x-4 bg-emerald-500 text-white p-3 rounded-xl border border-emerald-400 shadow-xl flex items-center space-x-2 animate-fade-in relative z-50 text-xs">
-                  <Bookmark className="h-4.5 w-4.5 shrink-0" />
-                  <span className="font-sans font-semibold text-left">{successMessage}</span>
+                <div className="space-y-1">
+                  <h4 className="font-display text-sm font-black uppercase tracking-wider text-stone-900 group-hover:text-rose-500 transition-colors">3. Tell Your Story</h4>
+                  <p className="font-sans text-xs text-stone-600 leading-relaxed max-w-[245px] mx-auto">
+                    Carry your tiny universe with you and let it say what words sometimes cannot.
+                  </p>
                 </div>
-              )}
-
-              {/* Mini visual summary of custom options */}
-              <div className="pt-4 border-t border-stone-150 flex flex-wrap justify-between items-center text-[10px] font-mono text-stone-500 relative z-10 gap-2">
-                <div className="flex gap-2">
-                  <span className="bg-stone-100/80 py-0.5 px-2 rounded">
-                    Charms: {selectedCharms.length}/6
-                  </span>
-                  <span className="bg-stone-100/80 py-0.5 px-2 rounded">
-                    Engraving: &ldquo;{customName || 'None'}&rdquo;
-                  </span>
-                </div>
-                
-                <span className="font-bold text-stone-700">
-                  Custom base: {jewelryType.toUpperCase()}
-                </span>
-              </div>
-
-            </div>
-
-            {/* Selector of Jewelry Core Type */}
-            <div className="mt-6 bg-white/50 border border-stone-200/60 p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-left shadow-sm backdrop-blur">
-              <div>
-                <h5 className="font-display text-xs font-bold text-stone-700 uppercase tracking-widest flex items-center space-x-1">
-                  <Paintbrush className="h-3.5 w-3.5 text-stone-500" />
-                  <span>Select Core Jewelry</span>
-                </h5>
-                <p className="font-sans text-[11px] text-stone-400">
-                  Base chain or cord (Classy Silver Bracelet, Orbit Necklace, Cord):
-                </p>
-              </div>
-
-              <div className="flex gap-2 bg-white/80 p-1 rounded-xl border border-stone-150 shadow-inner">
-                {(['bracelet', 'necklace', 'cord'] as const).map((type) => (
-                  <button
-                    key={type}
-                    onClick={() => setJewelryType(type)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-display font-extrabold tracking-wide uppercase transition-all ${
-                      jewelryType === type
-                        ? 'bg-black text-white shadow-sm'
-                        : 'text-stone-500 hover:text-stone-900'
-                    }`}
-                  >
-                    {type === 'bracelet' && 'Bracelet'}
-                    {type === 'necklace' && 'Necklace'}
-                    {type === 'cord' && 'Cord'}
-                  </button>
-                ))}
               </div>
             </div>
-
           </div>
-
         </div>
 
       </section>
