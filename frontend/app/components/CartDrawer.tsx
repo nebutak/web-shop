@@ -23,11 +23,11 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
 
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
         
-        {/* Drawer container panel */}
-        <div className="w-screen max-w-md bg-white border-l border-stone-200 flex flex-col justify-between shadow-2xl relative z-10 animate-slide-in">
+        {/* Drawer container panel - premium glassmorphism */}
+        <div className="w-screen max-w-md bg-white/85 backdrop-blur-xl border-l border-white/20 flex flex-col justify-between shadow-2xl relative z-10 animate-slide-in">
           
           {/* Header segment of lookbook drawer */}
-          <div className="px-6 py-5 border-b border-stone-100 flex items-center justify-between">
+          <div className="px-6 py-5 border-b border-stone-100/60 flex items-center justify-between">
             <div className="space-y-1">
               <h2 className="font-display text-lg font-extrabold text-black uppercase tracking-tight flex items-center space-x-1.5">
                 <span>Custom Designs Cart</span>
@@ -42,7 +42,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
 
             <button 
               onClick={onClose}
-              className="p-1 rounded-full text-stone-400 hover:bg-stone-50 hover:text-black focus:outline-none transition-colors"
+              className="p-1.5 rounded-full text-stone-400 hover:bg-white/50 hover:text-black focus:outline-none transition-all duration-300"
             >
               <X className="h-5 w-5" />
             </button>
@@ -70,18 +70,18 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
               <div className="space-y-4">
                 {cartItems.map((item, index) => {
                   
-                  // Map custom colors
+                  // Map custom colors with premium borders and glass styles
                   const accentColorClass = {
-                    blue: 'border-blue-300 bg-blue-50/40 text-blue-500',
-                    yellow: 'border-amber-300 bg-amber-50/40 text-amber-500',
-                    red: 'border-rose-300 bg-rose-50/40 text-red-500',
-                    indigo: 'border-indigo-300 bg-indigo-50/40 text-indigo-500'
-                  }[item.vibeColor] || 'border-stone-300 bg-stone-50';
+                    blue: 'border-blue-200/60 bg-blue-50/20 text-blue-600 hover:border-blue-400/50',
+                    yellow: 'border-amber-200/60 bg-amber-50/20 text-amber-600 hover:border-amber-400/50',
+                    red: 'border-rose-200/60 bg-rose-50/20 text-rose-600 hover:border-rose-400/50',
+                    indigo: 'border-indigo-200/60 bg-indigo-50/20 text-indigo-600 hover:border-indigo-400/50'
+                  }[item.vibeColor] || 'border-stone-200 bg-stone-50/30';
 
                   return (
                     <div 
                       key={index}
-                      className={`relative border-2 rounded-2xl p-4 flex items-start justify-between gap-4 transition-all hover:border-black ${accentColorClass}`}
+                      className={`relative border rounded-2xl p-4 flex items-start justify-between gap-4 transition-all duration-300 shadow-sm ${accentColorClass}`}
                     >
                       
                       <div className="space-y-2 text-left">
@@ -91,7 +91,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
                             Vibe: {item.vibeColor}
                           </span>
                           <span className="text-stone-300">•</span>
-                          <span className="text-[9px] font-mono font-bold text-stone-600 block uppercase">
+                          <span className="text-[9px] font-mono font-bold text-stone-500 block uppercase">
                             Base: {item.baseType}
                           </span>
                         </div>
@@ -106,7 +106,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
                           {item.selectedCharms.map((charm, cIdx) => (
                             <span 
                               key={cIdx}
-                              className="inline-flex items-center gap-1 bg-white border border-stone-200 px-2 py-0.5 rounded-full text-[10px] font-mono text-stone-600"
+                              className="inline-flex items-center gap-1 bg-white/95 border border-stone-150 px-2 py-0.5 rounded-full text-[10px] font-mono text-stone-600 shadow-sm"
                             >
                               {charm === 'astra' && <Sparkles className="h-3 w-3 text-blue-500" />}
                               {charm === 'sirius' && <Heart className="h-3 w-3 text-amber-500" />}
@@ -120,7 +120,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
                       {/* Remove item action */}
                       <button
                         onClick={() => onRemoveItem(index)}
-                        className="p-1.5 rounded-lg border border-stone-200 bg-white hover:border-red-500 hover:text-red-500 text-stone-400 hover:bg-stone-50 focus:outline-none transition-colors shrink-0"
+                        className="p-1.5 rounded-lg border border-stone-200 bg-white/90 hover:border-red-500 hover:text-red-500 text-stone-400 hover:bg-stone-50 focus:outline-none transition-all duration-305 shrink-0 cursor-pointer shadow-sm"
                         title="Delete Configuration"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -136,7 +136,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
 
           {/* Footer segment: Submit Pre-Order */}
           {cartItems.length > 0 && (
-            <div className="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
+            <div className="p-6 border-t border-stone-100/60 bg-stone-50/50 backdrop-blur-md space-y-4 relative z-20">
               
               <div className="flex items-start space-x-2 text-left">
                 <Shield className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
@@ -147,7 +147,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem, o
 
               <button
                 onClick={onCheckout}
-                className="w-full rounded-2xl bg-black hover:bg-stone-900 border-2 border-black text-white py-4 font-display text-xs font-bold tracking-widest uppercase transition-all duration-300"
+                className="w-full rounded-full bg-stone-950 hover:bg-black text-white py-4 font-display text-xs font-bold tracking-widest uppercase transition-all duration-350 border border-stone-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.15)] cursor-pointer animate-pulse-glow"
               >
                 Submit Custom Design Order
               </button>

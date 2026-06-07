@@ -278,10 +278,7 @@ export default function ProductsView({ onNotifySoon }: ProductsViewProps) {
                       {prod.description}
                     </p>
 
-                    {/* Price tag */}
-                    <p className="font-sans text-xs font-bold text-stone-800 pt-1 text-center">
-                      From {prod.price?.toLocaleString() || '129,000'}₫
-                    </p>
+
                   </div>
 
                   {/* Centered Actions Block: Primary pill button and secondary text link */}
