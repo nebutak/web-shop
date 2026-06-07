@@ -157,11 +157,11 @@ export default function Footer() {
 
         {/* Bottom copyright & attribution */}
         <div className="mt-12 border-t border-stone-900 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-500 font-sans">
-          <p>© 2026 YOUniverse. Designed with pride by ISB event contributors.</p>
+          <p>© 2026 YOUniverse. Designed with pride by YOUniverse_Group 3.</p>
           <div className="flex space-x-4 mt-4 md:mt-0 font-sans text-stone-500">
-            <span>Class: ISB Event Team</span>
+            <span>Class: DMK04_Wednesday shift 1_May2026</span>
             <span>•</span>
-            <span>University of Economics HCMC</span>
+            <span>University of Economics HCMC, UEH.ISB Honours College</span>
           </div>
         </div>
 
