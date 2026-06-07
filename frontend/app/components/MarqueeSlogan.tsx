@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 
 interface MarqueeSloganProps {
@@ -5,35 +6,62 @@ interface MarqueeSloganProps {
 }
 
 export default function MarqueeSlogan({ onSloganClick }: MarqueeSloganProps) {
-  // Let's build a long line of repeated slogans so there are no empty gaps during the loop.
-  const sloganText = "A galaxy to hold, a story to be told • ";
+  // Repeated text to form a continuous infinite ribbon without gaps
+  const sloganText = "A galaxy to hold, a story to be told • 💫 • ";
   const repeats = Array(12).fill(sloganText).join(" ");
+  
+  // States to track cursor coordinates and hover state
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    // Estimate tooltip width to prevent it from going off the screen edges
+    const estimatedTooltipHalfWidth = 120; // 240px total width / 2
+    const padding = 16; // Safety margin from screen edge
+    
+    // Clamp the X coordinate within the viewport boundaries
+    const minX = estimatedTooltipHalfWidth + padding;
+    const maxX = window.innerWidth - (estimatedTooltipHalfWidth + padding);
+    const clampedX = Math.max(minX, Math.min(maxX, e.clientX));
+
+    setMousePos({ x: clampedX, y: e.clientY });
+  };
 
   return (
-    <button
-      onClick={onSloganClick}
-      title="Khám phá câu chuyện của chúng tôi!"
-      className="group relative block w-full overflow-hidden border-y border-stone-200 bg-amber-50/50 py-3.5 focus:outline-none transition-colors duration-300 hover:bg-amber-100/50 cursor-pointer text-left"
+    <div
+      className="relative block w-full overflow-hidden border-y border-black bg-[#FAF6EE] py-3.5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={handleMouseMove}
     >
       <div className="relative flex w-full overflow-hidden">
-        {/* Animated Marquee Inner */}
-        <div className="flex animate-marquee whitespace-nowrap text-sm font-display font-black uppercase tracking-widest text-black">
-          <span className="inline-block pr-4 flex items-center gap-2">
+        {/* Clickable repeating slogan text button */}
+        <button
+          onClick={onSloganClick}
+          className="flex animate-marquee-ltr whitespace-nowrap text-xs font-display font-black uppercase tracking-widest text-black py-0.5 hover:text-amber-500 focus:outline-none cursor-pointer transition-colors duration-300"
+        >
+          <span className="inline-block pr-2">
             {repeats}
-            <Sparkles className="h-4 w-4 text-amber-500 animate-twinkle inline scale-120" />
           </span>
-          <span className="inline-block pr-4 flex items-center gap-2">
+          <span className="inline-block pr-2">
             {repeats}
-            <Sparkles className="h-4 w-4 text-blue-500 animate-twinkle inline scale-120" />
           </span>
-        </div>
+        </button>
       </div>
 
-      {/* Floating Sparkle Hover Prompt */}
-      <span className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-black text-[10px] font-mono tracking-widest font-extrabold text-white px-2.5 py-1 rounded-full uppercase flex items-center gap-1.5 shadow-md">
-        <span>About us page</span>
-        <Sparkles className="h-3 w-3 text-yellow-300 animate-spin-slow" />
-      </span>
-    </button>
+      {/* Premium custom tooltip that follows the mouse cursor (Desktop only) */}
+      {isHovered && (
+        <div
+          className="hidden md:flex fixed pointer-events-none bg-black text-white text-[10px] md:text-xs font-sans font-semibold px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl border border-stone-800 z-[9999] -translate-x-1/2 whitespace-nowrap"
+          style={{
+            left: `${mousePos.x}px`,
+            top: `${mousePos.y + 18}px`,
+          }}
+        >
+          <span>Discover our story!</span>
+          <Sparkles className="h-3.5 w-3.5 text-amber-400 animate-twinkle" />
+        </div>
+      )}
+    </div>
   );
 }

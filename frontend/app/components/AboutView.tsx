@@ -11,21 +11,30 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
     <div className="pb-24 space-y-20 text-stone-800" id="about-us-view">
       
       {/* 1. Page Header Block */}
-      <section className="relative overflow-hidden bg-stone-50 py-16 px-4">
-        {/* Abstract space glow background */}
-        <div className="absolute inset-0 cosmic-banner-glow pointer-events-none" />
-        <div className="absolute bottom-4 left-1/3 text-amber-300 animate-twinkle">✦</div>
-        <div className="absolute top-4 right-1/4 text-red-400 animate-twinkle duration-1000">✦</div>
+      <section className="relative overflow-hidden h-48 sm:h-64 cursor-default rounded-3xl mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto mt-6 shadow-sm border border-stone-800 bg-black flex items-center justify-center">
+        {/* Banner background image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/about-banner.png" 
+            alt="YOUniverse About Banner" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
+        </div>
 
-        <div className="mx-auto max-w-7xl text-center space-y-4 relative z-10">
-          <span className="bg-black text-white text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full">
+        {/* Ambient cosmic elements */}
+        <div className="absolute bottom-4 left-1/3 text-amber-300 animate-twinkle z-10">✦</div>
+        <div className="absolute top-4 right-1/4 text-red-400 animate-twinkle duration-1000 z-10">✦</div>
+
+        <div className="mx-auto max-w-xl text-center space-y-3 relative z-10 px-4">
+          <span className="inline-block bg-amber-500/20 text-amber-300 text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border border-amber-500/30">
             Our Story & Values
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl font-black text-black uppercase">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wider">
             ABOUT YOUNIVERSE
           </h1>
-          <p className="font-sans text-stone-500 text-sm max-w-xl mx-auto leading-relaxed">
-            Dự án dệt nên vẻ đẹp cá tính độc bản từ UEH.ISB. Tạo dựng quyền được là chính mình cho tất cả mọi người.
+          <p className="font-sans text-stone-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            A project weaving unique identity and aesthetics from UEH.ISB. Championing the right to be yourself for everyone.
           </p>
         </div>
       </section>
@@ -37,43 +46,46 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           {/* Left info box (Big Headline) */}
           <div className="lg:col-span-5 space-y-4 text-left lg:sticky lg:top-28">
             <span className="text-[10px] font-mono font-black uppercase text-amber-500 tracking-widest block">
-              01 / Khơi Nguồn Cảm Hứng
+              01 / The Inspiration
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-black uppercase tracking-tight leading-tight">
-              Từ những cá tính bị rập khuôn đến một vũ trụ tự do.
+              From cookie-cutter molds to a free universe.
             </h2>
-            <div className="h-1 w-20 bg-black mt-4" />
+            <div className="h-1 w-20 bg-amber-500 mt-4 rounded" />
             
             {/* Ambient ornament graphics background */}
             <div className="hidden lg:block pt-10">
-              <div className="p-4 border-2 border-stone-200 border-dashed rounded-2xl bg-stone-50 flex items-center space-x-3 text-stone-500">
+              <div className="relative p-6 border border-stone-200 rounded-2xl bg-white flex items-center space-x-3 text-stone-600 shadow-sm transition-all duration-300 hover:shadow-md">
                 <Quote className="h-8 w-8 text-amber-500 shrink-0" />
                 <p className="text-[11px] font-mono leading-relaxed">
-                  &ldquo;Chúng mình khát khao phá vỡ chiếc khuôn cứng nhắc để đưa Gen Z bộc lộ con người chân thật nhất.&rdquo;
+                  &ldquo;We long to break rigid stereotypes, allowing Gen Z to express their truest, most authentic selves.&rdquo;
                 </p>
+                {/* Decorative stars */}
+                <Sparkles className="absolute -top-2 -right-2 h-4 w-4 text-amber-400 animate-twinkle" />
+                <div className="absolute -bottom-2 -left-2 text-stone-300 text-xs animate-twinkle duration-2000">✦</div>
               </div>
             </div>
           </div>
 
           {/* Right info text paragraph */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <div className="relative bg-white border-2 border-black rounded-3xl p-6 md:p-10 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="relative bg-white border border-stone-200/80 rounded-3xl p-6 md:p-10 shadow-sm hover:shadow-md transition-all duration-300">
               
-              <div className="absolute top-4 right-4 text-stone-200 font-display text-7xl font-bold select-none pointer-events-none">
+              <div className="absolute top-4 right-4 text-stroke-current text-stone-300/30 font-display text-8xl font-black select-none pointer-events-none">
                 UEH
               </div>
               
               <div className="space-y-6 text-stone-600 text-sm leading-relaxed font-sans">
                 <p className="first-letter:text-4xl first-letter:font-extrabold first-letter:text-black first-letter:mr-2 first-letter:float-left">
-                  Khởi nguồn từ những mảnh ghép đầy cá tính tại <strong className="text-black font-semibold">UEH.ISB</strong>, YOUniverse bắt nguồn từ một sự thật khiến chúng mình trăn trở: Thế giới nội tâm của Gen Z vốn đa sắc, cớ sao chúng ta lại phải thu mình trong những món phụ kiện rập khuôn phổ thông?
+                  Originating from a passionate team at <strong className="text-black font-semibold">UEH.ISB</strong>, YOUniverse was born out of a question that kept us restless: Gen Z's inner world is vibrant and multi-faceted, so why do we have to constrain ourselves to generic, mass-produced accessories?
                 </p>
                 
                 <p>
-                  YOUniverse ra đời để phá vỡ hoàn toàn giới hạn đó. Chúng mình trao gửi cho bạn một không gian sáng tạo vô tận: một &quot;vũ trụ&quot; thu nhỏ, nơi từng chiếc charm tinh tú lấp lánh sẽ thay bạn kể câu chuyện của riêng mình một cách tự nhiên nhất.
+                  YOUniverse was created to completely break those boundaries. We present you with an infinite space for creativity: a miniature &quot;universe&quot; where each sparkling, starry charm speaks for you in the most authentic way possible.
                 </p>
                 
                 <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200 font-mono text-xs text-stone-800">
-                  ⚡ Không cần phải cất lời lên tiếng, thế giới xung quanh vẫn sẽ nhận biết rõ bạn là ai, bạn mang những đam mê đặc biệt gì, và mang bản sắc độc đáo đến nhường nào.
+                  ⚡ Without saying a single word, the world around you will immediately know who you are, what passions you carry, and how unique your identity truly is.
                 </div>
               </div>
 
@@ -88,11 +100,11 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Mission Card */}
-          <div className="bg-gradient-to-br from-blue-50/40 to-white border-2 border-black p-8 rounded-3xl text-left space-y-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-blue-50/20 via-white to-white border border-stone-200/80 p-8 rounded-3xl text-left space-y-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-blue-200/80 hover:shadow-[0_12px_35px_-5px_rgba(59,130,246,0.18)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 h-20 w-20 bg-blue-500/5 rounded-bl-full group-hover:scale-110 duration-500 pointer-events-none" />
             
             <div className="flex items-center space-x-3">
-              <span className="p-2 bg-blue-500 text-white rounded-xl">
+              <span className="p-2 bg-blue-50 text-blue-600 border border-blue-100 rounded-xl flex items-center justify-center">
                 <Flame className="h-5 w-5 animate-pulse" />
               </span>
               <h3 className="font-display text-xl font-extrabold text-black uppercase tracking-tight">
@@ -101,16 +113,16 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
             </div>
             
             <p className="font-sans text-stone-700 text-sm leading-relaxed">
-              Nhiệm vụ của YOUniverse không phải là bán phụ kiện thông thường. Chúng mình bán <strong className="text-black font-bold">&ldquo;quyền được là chính mình&rdquo;</strong>. Bằng việc kiến tạo các dòng charm mang tính biểu tượng cao độ, chúng mình giúp bạn mang theo những sở thích bình dị, những điểm tựa tinh thần vững vàng đi khắp mọi nơi.
+              The mission of YOUniverse is not just to sell standard accessories. We sell <strong className="text-black font-bold">&ldquo;the right to be yourself&rdquo;</strong>. By creating highly symbolic charm lines, we help you carry your simple hobbies and reliable spiritual anchors wherever you go.
             </p>
           </div>
 
           {/* Vision Card */}
-          <div className="bg-gradient-to-br from-amber-50/40 to-white border-2 border-black p-8 rounded-3xl text-left space-y-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-amber-50/20 via-white to-white border border-stone-200/80 p-8 rounded-3xl text-left space-y-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-amber-200/80 hover:shadow-[0_12px_35px_-5px_rgba(234,179,8,0.18)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 h-20 w-20 bg-amber-500/5 rounded-bl-full group-hover:scale-110 duration-500 pointer-events-none" />
 
             <div className="flex items-center space-x-3">
-              <span className="p-2 bg-amber-500 text-white rounded-xl">
+              <span className="p-2 bg-amber-50 text-amber-600 border border-amber-100 rounded-xl flex items-center justify-center">
                 <Eye className="h-5 w-5" />
               </span>
               <h3 className="font-display text-xl font-extrabold text-black uppercase tracking-tight">
@@ -119,7 +131,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
             </div>
 
             <p className="font-sans text-stone-700 text-sm leading-relaxed">
-              Chúng mình mong muốn trở thành thương hiệu phụ kiện cá nhân hóa hàng đầu của Gen Z do chính <strong className="text-black font-bold">UEH.ISB-ers</strong> sáng lập và làm chủ. Là thương hiệu quà tặng truyền cảm hứng phong cách quý giá, giúp mỗi khách hàng tự tin vẽ nên bức tranh dấu ấn cá thể độc lập.
+              We aim to become the leading personalized accessory brand for Gen Z, founded and owned by <strong className="text-black font-bold">UEH.ISB-ers</strong>. We aspire to be an inspiring lifestyle gift brand, empowering every customer to confidently depict their independent individual signature.
             </p>
           </div>
 
@@ -131,13 +143,13 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
         
         <div className="text-center space-y-2">
           <span className="text-[10px] font-mono font-black uppercase text-amber-500 tracking-widest block">
-            02 / Triết Lý Hoạt Động
+            02 / Core Philosophy
           </span>
           <h2 className="font-display text-3xl font-extrabold text-black uppercase tracking-tight">
             Our Core Values (Y.O.U)
           </h2>
           <p className="font-sans text-stone-500 text-xs max-w-sm mx-auto">
-            Giá trị cốt lõi làm nên linh hồn phong cách thời trang hạt ngọc vũ trụ.
+            Core values that construct the soul of our cosmic jewelry styling.
           </p>
         </div>
 
@@ -146,18 +158,36 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           {CORE_VALUES.map((val) => {
             // Give specific letters distinct layout designs (Y: Blue, O: Yellow, U: Red)
             const colorSetup = val.letter === 'Y' 
-              ? { text: 'text-blue-500', glow: 'bg-blue-500/5', border: 'border-blue-100 hover:border-blue-400', mark: 'bg-blue-500' }
+              ? { 
+                  text: 'text-blue-500', 
+                  glow: 'bg-blue-500/5', 
+                  border: 'border-stone-200/80 hover:border-blue-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(59,130,246,0.15)]', 
+                  strokeClass: 'text-stroke-current text-blue-200/30 group-hover:text-blue-300/60' 
+                }
               : val.letter === 'O'
-              ? { text: 'text-amber-500', glow: 'bg-amber-500/5', border: 'border-amber-100 hover:border-amber-400', mark: 'bg-amber-500' }
-              : { text: 'text-red-500', glow: 'bg-rose-500/5', border: 'border-rose-100 hover:border-rose-400', mark: 'bg-red-500' };
+              ? { 
+                  text: 'text-amber-500', 
+                  glow: 'bg-amber-500/5', 
+                  border: 'border-stone-200/80 hover:border-amber-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(234,179,8,0.15)]', 
+                  strokeClass: 'text-stroke-current text-amber-200/30 group-hover:text-amber-300/60' 
+                }
+              : { 
+                  text: 'text-rose-500', 
+                  glow: 'bg-rose-500/5', 
+                  border: 'border-stone-200/80 hover:border-rose-200/80', 
+                  hoverShadow: 'hover:shadow-[0_12px_30px_-5px_rgba(244,63,94,0.15)]', 
+                  strokeClass: 'text-stroke-current text-rose-200/30 group-hover:text-rose-300/60' 
+                };
 
             return (
               <div
                 key={val.letter}
-                className={`relative bg-white border-2 rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 group shadow-sm ${colorSetup.border}`}
+                className={`relative bg-white border rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 group shadow-sm ${colorSetup.border} ${colorSetup.hoverShadow}`}
               >
                 {/* Decorative Giant background letter */}
-                <span className="absolute -top-6 -right-2 text-stone-100 font-display text-[150px] font-black select-none pointer-events-none group-hover:scale-110 group-hover:text-stone-200/60 duration-500">
+                <span className={`absolute -top-6 -right-2 font-display text-[150px] font-black select-none pointer-events-none transition-all duration-500 group-hover:scale-108 ${colorSetup.strokeClass}`}>
                   {val.letter}
                 </span>
 
@@ -198,7 +228,7 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
 
       {/* 6. Active Call-to-Action (CTA Section) */}
       <section className="mx-auto max-w-4xl px-4 text-center">
-        <div className="bg-black text-white rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center space-y-6 shadow-xl border-4 border-stone-100">
+        <div className="bg-black text-white rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col items-center space-y-6 shadow-xl border border-stone-850">
           
           <div className="absolute inset-0 bg-stone-900/30 opacity-60 pointer-events-none" />
           <div className="absolute top-4 left-4 text-amber-400 text-xl animate-twinkle">✦</div>
@@ -209,10 +239,10 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
               Make Your Own Set
             </span>
             <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-black text-white uppercase leading-tight max-w-xl mx-auto">
-              Vậy bạn đã sẵn sàng để tạo ra vũ trụ cho riêng mình chưa?
+              So are you ready to create your own universe?
             </h3>
             <p className="font-sans text-stone-400 text-xs max-w-sm mx-auto">
-              Click ngay phía dưới để du ngoạn trang danh mục sản phẩm, xem trước các charm đặc chế tinh xảo của chúng mình!
+              Click below to explore our products catalog and check out our custom-crafted charms!
             </p>
           </div>
 
@@ -220,9 +250,9 @@ export default function AboutView({ onNavigate }: AboutViewProps) {
           <button
             id="cta-about-btn"
             onClick={() => onNavigate('products')}
-            className="relative z-10 w-full sm:w-auto rounded-full bg-white hover:bg-stone-100 text-black font-display text-xs font-black tracking-widest uppercase px-8 py-4 transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 text-center flex items-center justify-center space-x-2 cursor-pointer"
+            className="relative z-10 w-full sm:w-auto rounded-full bg-white hover:bg-stone-105 text-black font-display text-xs font-black tracking-widest uppercase px-8 py-4 transition-all duration-305 hover:shadow-2xl hover:scale-105 active:scale-95 text-center flex items-center justify-center space-x-2 cursor-pointer"
           >
-            <span>Khám Phá Sản Phẩm Ngay</span>
+            <span>Explore Products Now</span>
             <Sparkles className="h-4 w-4 text-amber-500 animate-twinkle" />
           </button>
 
