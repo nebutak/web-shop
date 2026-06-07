@@ -96,7 +96,7 @@ export default function Footer() {
           {/* Col 3: Main Contacts - Group 1 */}
           <div className="space-y-4">
             <h3 className="font-display text-xs font-bold uppercase tracking-widest text-white border-b border-stone-800 pb-2">
-              Contacts Group 1
+              Contacts
             </h3>
             
             <div className="flex flex-col space-y-3">
@@ -126,7 +126,7 @@ export default function Footer() {
           {/* Col 4: Main Contacts - Group 2 */}
           <div className="space-y-4">
             <h3 className="font-display text-xs font-bold uppercase tracking-widest text-white border-b border-stone-800 pb-2">
-              Contacts Group 2
+              Contacts
             </h3>
             
             <div className="flex flex-col space-y-3">
