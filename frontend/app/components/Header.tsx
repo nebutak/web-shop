@@ -102,19 +102,19 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
             onClick={() => setMobileMenuOpen(false)}
             className="group flex flex-col items-center justify-center focus:outline-none"
           >
-            <span className="relative font-youth text-2xl font-extrabold tracking-widest text-black flex items-center transition-transform hover:scale-105 duration-300">
-              <Sparkles className="absolute -left-6 top-1.5 h-4 w-4 text-amber-500 opacity-0 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-300 animate-twinkle" />
+            <span className="relative font-youth text-lg sm:text-2xl font-extrabold tracking-widest text-black flex items-center transition-transform hover:scale-105 duration-300">
+              <Sparkles className="absolute -left-5 sm:-left-6 top-1 sm:top-1.5 h-3 w-3 sm:h-4 sm:w-4 text-amber-500 opacity-0 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-300 animate-twinkle" />
               YO<span className="text-amber-500 group-hover:text-blue-500 transition-colors duration-500">U</span>niverse
-              <Sparkles className="absolute -right-6 bottom-1.5 h-4 w-4 text-blue-500 opacity-0 group-hover:opacity-100 group-hover:-rotate-12 transition-all duration-300 animate-twinkle" />
+              <Sparkles className="absolute -right-5 sm:-right-6 bottom-1 sm:bottom-1.5 h-3 w-3 sm:h-4 sm:w-4 text-blue-500 opacity-0 group-hover:opacity-100 group-hover:-rotate-12 transition-all duration-300 animate-twinkle" />
             </span>
-            <span className="text-[7px] font-mono tracking-[0.35em] text-stone-400 uppercase group-hover:text-red-500 transition-colors duration-500">
+            <span className="hidden sm:block text-[7px] font-mono tracking-[0.35em] text-stone-400 uppercase group-hover:text-red-500 transition-colors duration-500">
               A Galaxy to Hold
             </span>
           </Link>
         </div>
 
         {/* Right Side: Account state, Language Toggle, and Shopping Bag */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-3 z-20">
           {/* Language Toggle */}
           <div className="flex items-center rounded-full border border-stone-250 bg-stone-50/80 p-0.5 shadow-sm">
             <button
