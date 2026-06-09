@@ -4,6 +4,8 @@ export const translations = {
     home: 'Home',
     ourUniverse: 'Our YOUniverse',
     aboutUs: 'About us',
+    login: 'Login',
+    loginRegister: 'Login / Register',
     
     // Footer
     address: 'Address',
@@ -176,6 +178,8 @@ export const translations = {
     home: 'Trang chủ',
     ourUniverse: 'Vũ trụ YOUniverse',
     aboutUs: 'Về chúng tôi',
+    login: 'Đăng nhập',
+    loginRegister: 'Đăng nhập / Đăng ký',
     
     // Footer
     address: 'Địa chỉ',

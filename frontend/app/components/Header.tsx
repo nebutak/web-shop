@@ -167,7 +167,7 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
               id="header-login-btn"
               className="group relative flex h-10 px-5 items-center justify-center rounded-full bg-stone-950 hover:bg-black text-white font-display text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-md hover:translate-y-[-1px] focus:outline-none cursor-pointer"
             >
-              Login
+              {t.login}
             </Link>
           )}
 
@@ -270,7 +270,7 @@ export default function Header({ cartCount, onOpenCart }: HeaderProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className="block w-full text-center py-3 bg-stone-950 text-white font-display text-sm font-bold uppercase tracking-wider rounded-full hover:bg-black transition-all cursor-pointer"
                 >
-                  Login / Register
+                  {t.loginRegister}
                 </Link>
               )}
             </div>
