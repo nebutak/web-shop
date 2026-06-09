@@ -212,11 +212,11 @@ export const translations = {
     securedText: '* Dữ liệu được bảo mật tuyệt đối bởi YOUniverse ISB.',
     
     // Home View
-    heroTitle: 'MỖI DẢI THIÊN HÀ LÀ MỘT CÂU CHUYỆN ĐỢC KỂ',
+    heroTitle: 'MỖI DẢI THIÊN HÀ LÀ MỘT CÂU CHUYỆN ĐƯỢC KỂ',
     heroTagline: 'Những mẫu charm cá nhân hóa mang tên bạn, niềm đam mê của bạn và câu chuyện chỉ bạn mới có thể kể.',
     ctaCustomizer: 'Mở Xưởng Thiết Kế Vũ Trụ',
     ctaExplore: 'Khám Phá Các Hành Tinh',
-    planetTitle: 'Khám phá các Hành tinh',
+    planetTitle: 'Khám phá các hành tinh',
     planetSubtitle: 'Khám phá 3 phong cách vũ trụ đặc trưng được xây dựng từ các yếu tố của UEH.ISB.',
     planetAstraBadge: 'Dòng Astra',
     planetSiriusBadge: 'Dòng Sirius',
@@ -225,7 +225,7 @@ export const translations = {
     comingSoon: 'Sắp ra mắt',
     howToTitle: 'Cách tạo vũ trụ YOUniverse của riêng bạn',
     howToSubtitle: 'Tìm hiểu thiết kế thông minh với 3 bước cá nhân hóa. Tạo dấu ấn độc bản và năng lượng vũ trụ của riêng bạn.',
-    step1Title: '1. Chọn Vần Số / Vibe',
+    step1Title: '1. Chọn Tần Số / Vibe',
     step1Desc: 'Bắt đầu với tâm trạng, năng lượng của bạn và những chi tiết nhỏ tạo nên chính bạn.',
     step2Title: '2. Kết hợp Charm',
     step2Desc: 'Chọn dòng charm thể hiện tên bạn, niềm đam mê hoặc câu châm ngôn dẫn lối.',
@@ -233,7 +233,7 @@ export const translations = {
     step3Desc: 'Mang theo vũ trụ nhỏ bên mình và để nó nói lên những điều mà đôi khi ngôn từ không thể diễn tả.',
     
     // Customizer
-    stepVibe: '1. Vần Số Vibe',
+    stepVibe: '1. Tần Số Vibe',
     stepCharms: '2. Mảng Charm',
     stepEngrave: '3. Khắc Tên',
     vibeSelect: 'Chọn năng lượng bầu không khí thiên hà',
@@ -281,7 +281,7 @@ export const translations = {
     coreUTitle: 'Unconditional connection',
     coreUSubtitle: 'Kết nối vô điều kiện',
     coreUHighlight: 'Kết nối vô điều kiện',
-    coreUDesc: 'Hòa hợp cái tôi cá nhân với thế giới xung quanh qua những câu chuyện nhỏ được kể trên từng chiếc charms.',
+    coreUDesc: 'Hòa hợp cái tôi cá nhân với thế giới xung quanh qua những câu chuyện nhỏ được kể trên từng chiếc charm.',
     
     // Charms Info
     charmAstraBadge: 'Độc bản',

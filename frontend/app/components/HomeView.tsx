@@ -216,7 +216,7 @@ export default function HomeView({ onGoAbout, onGoProducts, onAddCustomToCart }:
                 <span className="block mt-1 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.3)]">
                   {language === 'vi' ? 'LÀ MỘT CÂU CHUYỆN' : 'A STORY TO BE'}
                 </span>
-                <span className="block mt-1">{language === 'vi' ? 'ĐỢC KỂ' : 'TOLD'}</span>
+                <span className="block mt-1">{language === 'vi' ? 'ĐƯỢC KỂ' : 'TOLD'}</span>
               </h1>
 
               {/* Decorative divider line */}
